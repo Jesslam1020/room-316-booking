@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room 316 Reservation System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🏠 Room 316 Reservations</h1>
+            <p>Your cozy meeting space awaits</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <button class="btn btn--primary nav-btn active" data-tab="booking">
+                📅 Make Booking
+            </button>
+            <button class="btn btn--secondary nav-btn" data-tab="view">
+                👀 View Bookings
+            </button>
+        </nav>
+
+        <!-- Booking Section -->
+        <section id="booking-section" class="section active">
+            <div class="booking-container">
+                <div class="calendar-container">
+                    <h2>Select Date</h2>
+                    <div class="calendar-header">
+                        <button id="prev-month" class="btn btn--outline btn--sm">‹</button>
+                        <h3 id="current-month"></h3>
+                        <button id="next-month" class="btn btn--outline btn--sm">›</button>
+                    </div>
+                    <div class="calendar-grid">
+                        <div class="calendar-weekdays">
+                            <div>Mon</div>
+                            <div>Tue</div>
+                            <div>Wed</div>
+                            <div>Thu</div>
+                            <div>Fri</div>
+                            <div>Sat</div>
+                            <div>Sun</div>
+                        </div>
+                        <div id="calendar-days" class="calendar-days"></div>
+                    </div>
+                </div>
+
+                <div class="booking-form-container">
+                    <h2>Book Room 316</h2>
+                    <form id="booking-form" class="booking-form">
+                        <div class="form-group">
+                            <label class="form-label">Selected Date</label>
+                            <input type="text" id="selected-date" class="form-control" readonly placeholder="Please select a date">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Available Time Slots</label>
+                            <div id="time-slots" class="time-slots"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="staff-name" class="form-label">Staff Name</label>
+                            <input type="text" id="staff-name" name="staffName" class="form-control" required placeholder="Enter your name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="remarks" class="form-label">Remarks (Optional)</label>
+                            <textarea id="remarks" name="remarks" class="form-control" rows="3" placeholder="Meeting purpose, special requirements, etc."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn--primary btn--full-width">
+                            ✨ Reserve Room 316
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- View Bookings Section -->
+        <section id="view-section" class="section">
+            <h2>📋 Current Bookings</h2>
+            <div class="bookings-filter">
+                <label for="filter-date" class="form-label">Filter by Date</label>
+                <input type="date" id="filter-date" class="form-control" style="max-width: 200px;">
+                <button id="clear-filter" class="btn btn--outline btn--sm">Clear</button>
+            </div>
+            <div id="bookings-container" class="bookings-container"></div>
+        </section>
+
+        <!-- Confirmation Modal -->
+        <div id="confirmation-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2>🎉 Booking Confirmed!</h2>
+                <div id="confirmation-details" class="confirmation-details"></div>
+                <div class="modal-actions">
+                    <button id="close-modal" class="btn btn--primary">Perfect!</button>
+                    <button id="make-another" class="btn btn--secondary">Make Another Booking</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loading" class="loading hidden">
+            <div class="loading-spinner">✨</div>
+            <p>Processing your booking...</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
